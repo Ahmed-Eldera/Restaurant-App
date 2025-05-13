@@ -1,0 +1,63 @@
+.hero-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.featured-dishes .card {
+  transition: transform 0.3s;
+  border: none;
+}
+
+.featured-dishes .card:hover {
+  transform: translateY(-5px);
+}
+
+.featured-dishes .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.price {
+  font-weight: bold;
+  color: #d9534f;
+  font-size: 1.2rem;
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background-color: #f8d7da;
+  color: #d9534f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonials .card {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #c9302c;
+  border-color: #c9302c;
+}
+
+.btn-outline-primary {
+  color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}

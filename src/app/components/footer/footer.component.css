@@ -1,0 +1,44 @@
+.footer {
+  margin-top: auto;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-icon {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-right: 15px;
+  transition: color 0.3s;
+}
+
+.footer-icon:hover {
+  color: var(--primary-color);
+}
+
+footer h5 {
+  font-weight: 600;
+}
+
+hr.bg-secondary {
+  opacity: 0.3;
+}
+
+@media (max-width: 767.98px) {
+  footer .row > div {
+    text-align: center;
+  }
+
+  .footer-icon {
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,28 @@
+.admin-dish-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #c9302c;
+  border-color: #c9302c;
+}
+
+.btn-outline-primary {
+  color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}

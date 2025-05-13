@@ -1,0 +1,15 @@
+.price {
+  font-weight: bold;
+  color: #d9534f;
+}
+
+.btn-primary {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #c9302c;
+  border-color: #c9302c;
+}

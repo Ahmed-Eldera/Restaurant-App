@@ -1,0 +1,19 @@
+.card {
+  border-radius: 10px;
+}
+
+.card-title {
+  color: #333;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #c9302c;
+  border-color: #c9302c;
+}

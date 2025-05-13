@@ -1,0 +1,142 @@
+<div class="container py-4">
+  <h1 class="mb-4">Admin Dashboard</h1>
+
+  <div class="row">
+    <!-- Form -->
+    <div class="col-lg-4 order-lg-2 mb-4">
+      <div class="card">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">{{ isEditing ? 'Edit Dish' : 'Add New Dish' }}</h5>
+        </div>
+        <div class="card-body">
+          <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show">
+            {{ successMessage }}
+            <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+          </div>
+
+          <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show">
+            {{ errorMessage }}
+            <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+          </div>
+
+          <form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Dish Name</label>
+              <input type="text" id="name" formControlName="name" class="form-control"
+                [ngClass]="{'is-invalid': dishForm.get('name')?.invalid && dishForm.get('name')?.touched}">
+              <div class="invalid-feedback" *ngIf="dishForm.get('name')?.errors?.['required']">Name is required</div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea id="description" formControlName="description" class="form-control" rows="3"
+                [ngClass]="{'is-invalid': dishForm.get('description')?.invalid && dishForm.get('description')?.touched}"></textarea>
+              <div class="invalid-feedback" *ngIf="dishForm.get('description')?.errors?.['required']">Description is required</div>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+              <label for="price" class="form-label">Price ($)</label>
+              <input type="number" id="price" formControlName="price" class="form-control" step="0.01" min="0.01"
+                [ngClass]="{'is-invalid': dishForm.get('price')?.invalid && dishForm.get('price')?.touched}">
+              <div class="invalid-feedback" *ngIf="dishForm.get('price')?.errors?.['required']">Price is required</div>
+              <div class="invalid-feedback" *ngIf="dishForm.get('price')?.errors?.['min']">Price must be greater than 0</div>
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+              <label for="category" class="form-label">Category</label>
+              <input type="text" id="category" formControlName="category" class="form-control"
+                [ngClass]="{'is-invalid': dishForm.get('category')?.invalid && dishForm.get('category')?.touched}">
+              <div class="invalid-feedback" *ngIf="dishForm.get('category')?.errors?.['required']">Category is required</div>
+            </div>
+
+            <!-- Image URL -->
+            <div class="mb-3">
+              <label for="imageUrl" class="form-label">Image URL</label>
+              <input type="text" id="imageUrl" formControlName="imageUrl" class="form-control"
+                [ngClass]="{'is-invalid': dishForm.get('imageUrl')?.invalid && dishForm.get('imageUrl')?.touched}">
+              <div class="invalid-feedback" *ngIf="dishForm.get('imageUrl')?.errors?.['required']">Image URL is required</div>
+            </div>
+
+            <!-- Available -->
+            <div class="mb-3 form-check form-switch">
+              <input type="checkbox" id="available" class="form-check-input" formControlName="available">
+              <label class="form-check-label" for="available">Available</label>
+            </div>
+
+            <!-- Featured -->
+            <div class="mb-4 form-check form-switch">
+              <input type="checkbox" id="featured" class="form-check-input" formControlName="featured">
+              <label class="form-check-label" for="featured">Featured</label>
+            </div>
+
+            <!-- Submit / Cancel -->
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary" [disabled]="dishForm.invalid || loading">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+                {{ isEditing ? 'Update Dish' : 'Add Dish' }}
+              </button>
+              <button type="button" class="btn btn-outline-secondary" (click)="resetForm()" *ngIf="isEditing">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish List -->
+    <div class="col-lg-8 order-lg-1">
+      <div class="card">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Manage Dishes</h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dish of dishes$ | async">
+                  <td><img [src]="dish.imageUrl || 'assets/placeholder-food.jpg'" class="admin-dish-img" alt="{{ dish.name }}"></td>
+                  <td>
+                    {{ dish.name }}
+                    <span *ngIf="dish.featured" class="badge bg-warning text-dark ms-1">Featured</span>
+                  </td>
+                  <td>{{ dish.category }}</td>
+                  <td>${{ dish.price.toFixed(2) }}</td>
+                  <td>
+                    <span class="badge" [ngClass]="dish.available ? 'bg-success' : 'bg-danger'">
+                      {{ dish.available ? 'Available' : 'Unavailable' }}
+                    </span>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary me-1" (click)="editDish(dish)">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteDish(dish.id!)">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div *ngIf="!(dishes$ | async)?.length" class="text-center py-4">
+            <p class="text-muted">No dishes found. Add your first dish using the form.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+      @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
+
+    .card {
+      transition: transform 0.3s;
+      border: none;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #d9534f;
+      font-size: 1.2rem;
+    }
+
+    .btn-primary {
+      background-color: #d9534f;
+      border-color: #d9534f;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #c9302c;
+      border-color: #c9302c;
+    }
+
+    .btn-outline-primary {
+      color: #d9534f;
+      border-color: #d9534f;
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus {
+      background-color: #d9534f;
+      border-color: #d9534f;
+      color: #fff;
+
+    }
+    .price {
+  font-weight: bold;
+  color: #d9534f;
+}
+
+.btn-primary {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #c9302c;
+  border-color: #c9302c;
+}
+
+    .navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+.footer {
+  margin-top: auto;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-icon {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-right: 15px;
+  transition: color 0.3s;
+}
+
+.footer-icon:hover {
+  color: var(--primary-color);
+}
+
+footer h5 {
+  font-weight: 600;
+}
+
+hr.bg-secondary {
+  opacity: 0.3;
+}
+
+@media (max-width: 767.98px) {
+  footer .row > div {
+    text-align: center;
+  }
+
+  .footer-icon {
+    margin-right: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <i class="bi bi-egg-fried me-1"></i> FoodieTown
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Cart</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container py-4">
+        <h2 class="mb-4">Your Orders</h2>
+      
+        <!-- Sample Order Card -->
+        <div class="card mb-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <div><strong>Order ID:</strong> 12345</div>
+            <div><strong>Total:</strong> $29.97</div>
+          </div>
+      
+          <div class="card-body p-0">
+            <table class="table table-striped mb-0">
+              <thead>
+                <tr>
+                  <th>Dish</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Spaghetti Carbonara</td>
+                  <td>2</td>
+                  <td>$12.99</td>
+                  <td>$25.98</td>
+                </tr>
+                <tr>
+                  <td>Garlic Bread</td>
+                  <td>1</td>
+                  <td>$3.99</td>
+                  <td>$3.99</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <div>
+              <strong>Status:</strong>
+              <span class="badge bg-warning text-dark">Processing</span>
+            </div>
+      
+            <!-- Admin section for demo -->
+            <div>
+              <label for="statusSelect-12345" class="me-2">Update Status:</label>
+              <select id="statusSelect-12345" class="form-select d-inline w-auto">
+                <option value="pending">Pending</option>
+                <option value="processing" selected>Processing</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      
+        <!-- If no orders -->
+        <!-- Uncomment to show "no orders" message -->
+        <!--
+        <p class="text-muted text-center">You haven't placed any orders yet.</p>
+        -->
+      </div>
+      
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <!-- About -->
+        <div class="col-md-4 mb-3">
+          <h5><i class="fas fa-utensils me-2"></i>FoodieTown</h5>
+          <p>Delicious food delivered to your doorstep.</p>
+        </div>
+  
+        <!-- Quick Links -->
+        <div class="col-md-4 mb-3">
+          <h5><i class="fas fa-link me-2"></i>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a href="/" class="text-white text-decoration-none">
+                <i class="fas fa-home me-1"></i> Home
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="/menu" class="text-white text-decoration-none">
+                <i class="fas fa-book-open me-1"></i> Menu
+              </a>
+            </li>
+            <li>
+              <a href="/orders" class="text-white text-decoration-none">
+                <i class="fas fa-receipt me-1"></i> Orders
+              </a>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Contact -->
+        <div class="col-md-4 mb-3">
+          <h5><i class="fas fa-envelope me-2"></i>Contact Us</h5>
+          <p class="mb-1">
+            <i class="fas fa-map-marker-alt me-1"></i> 123 Restaurant Street
+          </p>
+          <p class="mb-1">
+            <i class="fas fa-city me-1"></i> Food City, FC 12345
+          </p>
+          <p class="mb-1">
+            <i class="fas fa-envelope me-1"></i> info&#64;savorebites.com
+          </p>
+          <p class="mb-0">
+            <i class="fas fa-phone me-1"></i> +201094934234
+          </p>
+        </div>
+      </div>
+  
+      <hr class="border-light">
+  
+      <div class="text-center">
+        <p class="mb-0">
+          &copy; <span id="year"></span> <i class="fas fa-pepper-hot text-danger"></i> FoodieTown. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Set the current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  
+</body>
+</html>

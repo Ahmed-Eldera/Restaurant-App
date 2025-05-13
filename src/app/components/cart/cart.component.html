@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Your Cart</h2>
+
+  <ng-container *ngIf="cartItems$ | async as cartItems">
+    <div *ngIf="cartItems.length === 0">
+      <p>Your cart is empty.</p>
+    </div>
+
+    <div *ngFor="let item of cartItems" class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="item.dish.imageUrl" class="img-fluid rounded-start" alt="{{ item.dish.name }}" />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.dish.name }}</h5>
+            <p class="card-text">Price: ${{ item.dish.price }}</p>
+            <p class="card-text">Quantity: {{ item.quantity }}</p>
+            <div class="btn-group">
+              <button class="btn btn-danger" (click)="removeFromCart(item.dish.id!)">Remove</button>
+              <button class="btn btn-secondary" (click)="decreaseQuantity(item.dish.id!)">-</button>
+              <button class="btn btn-secondary" (click)="increaseQuantity(item.dish.id!)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="cartItems.length > 0" class="mt-4">
+      <h4>Total: ${{ getTotalPrice(cartItems) }}</h4>
+
+      <div class="mb-3">
+        <label for="address" class="form-label">Delivery Address</label>
+        <input id="address" [(ngModel)]="address" class="form-control" placeholder="123 Main St" />
+      </div>
+
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input id="phone" [(ngModel)]="phone" class="form-control" placeholder="555-1234" />
+      </div>
+
+      <button class="btn btn-primary" (click)="checkout()">Confirm & Checkout</button>
+    </div>
+  </ng-container>
+</div>

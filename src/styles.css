@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  --primary-color: #d9534f;
+  --primary-hover: #c9302c;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+/* Footer Styles */
+footer {
+  margin-top: auto;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-icon {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-right: 15px;
+  transition: color 0.3s;
+}
+
+.footer-icon:hover {
+  color: var(--primary-color);
+}
+
+footer h5 {
+  font-weight: 600;
+}
+
+hr.bg-secondary {
+  opacity: 0.3;
+}
+
+@media (max-width: 767.98px) {
+  footer .row > div {
+    text-align: center;
+  }
+
+  .footer-icon {
+    margin-right: 10px;
+  }
+}
